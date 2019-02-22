@@ -2,7 +2,10 @@ import requests
 import json
 import csv
 import argparse
+import matplotlib.pyplot as plt
 
+LEAGUE_ID_CLASSIC = "35977"
+LEAGUE_ID2_H2H = '36008'
 FPL_URL = "https://fantasy.premierleague.com/drf/"
 USER_SUMMARY_SUBURL = "element-summary/"
 LEAGUE_CLASSIC_STANDING_SUBURL = "leagues-classic-standings/"
@@ -10,7 +13,6 @@ LEAGUE_H2H_STANDING_SUBURL = "leagues-h2h-standings/"
 TEAM_ENTRY_SUBURL = "entry/"
 PLAYERS_INFO_SUBURL = "bootstrap-static"
 PLAYERS_INFO_FILENAME = "allPlayersInfo.json"
-
 USER_SUMMARY_URL = FPL_URL + USER_SUMMARY_SUBURL
 PLAYERS_INFO_URL = FPL_URL + PLAYERS_INFO_SUBURL
 START_PAGE = 1
@@ -130,6 +132,6 @@ while (True):
         writeToFile(listOfCountOfCaptainsPicked, "result captain " + str(leagueIdSelected) + ".csv")
 
         pageCount += 1
-    except Exception, e:
-        print str(e)
+    except Exception as e:
+        print(e)
         pass

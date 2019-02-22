@@ -2,6 +2,7 @@ import requests
 import json
 import csv
 import argparse
+import pyplot
 
 FPL_URL = "https://fantasy.premierleague.com/drf/"
 USER_SUMMARY_SUBURL = "element-summary/"
@@ -59,7 +60,7 @@ for element in allPlayers["elements"]:
     pointsPerMillionPer90 = round(pointsPer90 / cost, 2)
     bonusPer90 = round(element["bonus"] / appearances, 2)
     name = element["web_name"].encode('ascii', 'ignore')
-    playerElementIdToNameMap[element["id"]] = ",".join([name, str(position), str(totalScore), str(minutesPlayed), str(cost), str(points_per_game), str(points_per_game_per_million), str(bonusPer90), str(pointsPer90), str(pointsPerMillion), str(pointsPerMillionPer90)])
+    playerElementIdToNameMap[element["id"]] = " ".join([str(name), str(position), str(totalScore), str(minutesPlayed), str(cost), str(points_per_game), str(points_per_game_per_million), str(bonusPer90), str(pointsPer90), str(pointsPerMillion), str(pointsPerMillionPer90)])
 
 print(playerElementIdToNameMap)
 with open("ppm.csv", 'w') as f:
